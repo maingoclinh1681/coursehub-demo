@@ -77,3 +77,58 @@ print(search_courses("web"))
 
 # Bổ sung:
 print("Done")
+
+# Bài tập làm thêm: Hàm đăng ký học phần.
+def enroll_student(student_id, course_code):
+    # Kiểm tra sinh viên tồn tại
+    student_exists = False
+
+    for student in students:
+        if student["id"] == student_id:
+            student_exists = True
+            break
+
+    if not student_exists:
+        print("Sinh viên không tồn tại.")
+        return
+
+    # Kiểm tra học phần tồn tại
+    course = None
+
+    for c in courses:
+        if c["code"] == course_code:
+            course = c
+            break
+
+    if course is None:
+        print("Học phần không tồn tại.")
+        return
+
+    # Kiểm tra lớp còn chỗ
+    if course["enrolled"] >= course["capacity"]:
+        print("Lớp đã đầy.")
+        return
+
+    # Kiểm tra sinh viên đã đăng ký học phần chưa
+    for enrollment in enrollments:
+        if (enrollment["student_id"] == student_id
+                and enrollment["course_code"] == course_code):
+            print("Sinh viên đã đăng ký học phần này.")
+            return
+
+    # Thêm bản ghi đăng ký
+    enrollments.append({
+        "student_id": student_id,
+        "course_code": course_code
+    })
+
+    # Cập nhật số lượng sinh viên
+    course["enrolled"] += 1
+
+    print("Đăng ký học phần thành công.")
+
+enroll_student("22000001", "INT2204")
+enroll_student("22000001", "INT2205")
+enroll_student("24000001", "INT2204")
+enroll_student("22000001", "INT3508")
+enroll_student("22000002", "INT2204")
