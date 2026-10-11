@@ -1,0 +1,5 @@
+name: CourseHub Local
+values:
+  - key: base_url
+    value: ''
+color: 120
