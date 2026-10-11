@@ -1,0 +1,124 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "test_courseAPI_Buoi3",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "{{base_url}}"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "01 - Health",
+        "responses": {}
+      }
+    },
+    "/courses": {
+      "get": {
+        "summary": "02 - List courses",
+        "responses": {}
+      }
+    },
+    "/courses/INT2204": {
+      "get": {
+        "summary": "04 - Course detail",
+        "responses": {}
+      }
+    },
+    "/sections": {
+      "get": {
+        "summary": "05 - Available sections",
+        "parameters": [
+          {
+            "name": "available_only",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/students/22000001/enrollments": {
+      "get": {
+        "summary": "06 - Student enrollments",
+        "responses": {}
+      }
+    },
+    "/enrollments": {
+      "post": {
+        "summary": "07 - Create enrollment",
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "student_id": {
+                    "type": "string",
+                    "format": "utc-millisec"
+                  },
+                  "class_section_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "student_id": "22000004",
+                "class_section_id": "WEB-01"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enrollments/22000004/WEB-01": {
+      "delete": {
+        "summary": "10 - Delete enrollment",
+        "responses": {}
+      }
+    },
+    "/lecturers": {
+      "get": {
+        "summary": "Ex01 - List Lecturers",
+        "responses": {}
+      }
+    },
+    "/sections/WEB-01": {
+      "get": {
+        "summary": "Ex02 - Section Detail",
+        "responses": {}
+      }
+    },
+    "/sections/WEB-01/capacity": {
+      "patch": {
+        "summary": "Ex03 - Update Capacity",
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "capacity": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "capacity": 3
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
