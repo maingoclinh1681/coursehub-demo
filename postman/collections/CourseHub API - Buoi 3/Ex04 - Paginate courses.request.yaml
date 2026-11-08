@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{base_url}}/courses?skip=0&limit=2"
+method: GET
+queryParams:
+  skip: "0"
+  limit: "2"
+order: 12000
