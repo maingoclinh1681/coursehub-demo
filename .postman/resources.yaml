@@ -1,0 +1,11 @@
+workspace:
+  id: ebb15783-e69c-44f0-807c-510bd1f0ecb0
+cloudResources:
+  collections:
+    ../postman/collections/CourseHub API - Buoi 3 Copy: ff217eef-9842-408c-81b0-d5a15abcee42
+localResources:
+  specs:
+    - ../postman/specs/test_courseAPI_Buoi3/test_courseAPI_Buoi3.json
+resourceNameMappings:
+  specs:
+    - ../postman/specs/test_courseAPI_Buoi3/test_courseAPI_Buoi3.json: test_courseAPI_Buoi3
