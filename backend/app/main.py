@@ -8,6 +8,7 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from .database import engine
 from .schemas import EnrollmentCreate
 from .schemas import CapacityUpdate
+from fastapi.middleware.cors import CORSMiddleware
 
 logger = logging.getLogger(__name__)
 app = FastAPI(
@@ -15,7 +16,13 @@ app = FastAPI(
     version="0.4.0",
     description="API thuc hanh Buoi 4 - transaction, locking va hieu nang&quot",
     )
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "DELETE"],
+    allow_headers=["Content-Type"],
+)
 @app.get("/")
 def read_root() -> dict[str, str]:
     return {"message": "CourseHub API dang hoat dong"}
