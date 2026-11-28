@@ -20,6 +20,12 @@ jobs:
       - name: Compile backend
         run: python -m compileall backend
       - name: Test backend contract
+        env:
+          DB_HOST: localhost
+          DB_PORT: "5432"
+          DB_NAME: coursehub
+          DB_USER: CHANGE_ME
+          DB_PASSWORD: THAY_BANG_MAT_KHAU_CUA_BAN
         run: python -m pytest backend/tests -q
 
   frontend:
